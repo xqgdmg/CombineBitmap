@@ -142,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
+    /*
+     * 仿微信
+     */
     private void loadWechatBitmap(ImageView imageView, int count) {
         CombineBitmap.init(MainActivity.this)
                 .setLayoutManager(new WechatLayoutManager())
@@ -153,6 +156,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 .build();
     }
 
+    /*
+     * 仿钉钉
+     */
     private void loadDingBitmap(final ImageView imageView, int count) {
         CombineBitmap.init(MainActivity.this)
                 .setLayoutManager(new DingLayoutManager())

@@ -85,6 +85,9 @@ public class Builder {
         return this;
     }
 
+    /*
+     * 唯一的核心方法
+     */
     public void build() {
         subSize = getSubSize(size, gap, layoutManager, count);
         CombineHelper.init().load(this);
