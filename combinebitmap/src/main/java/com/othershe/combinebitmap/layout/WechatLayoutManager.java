@@ -7,6 +7,7 @@ import android.graphics.Color;
 public class WechatLayoutManager implements ILayoutManager {
     @Override
     public Bitmap combineBitmap(int size, int subSize, int gap, int gapColor, Bitmap[] bitmaps) {
+         // 画背景，背景就是分割线的颜色，并且只有颜色
         Bitmap result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
         if (gapColor == 0) {
@@ -15,14 +16,16 @@ public class WechatLayoutManager implements ILayoutManager {
         canvas.drawColor(gapColor);
 
         int count = bitmaps.length;
-        Bitmap subBitmap;
+        Bitmap subBitmap; // 每个独立的图片
 
+         // 计算每个头像的坐标，并绘制头像
         for (int i = 0; i < count; i++) {
             if (bitmaps[i] == null) {
                 continue;
             }
-            subBitmap = Bitmap.createScaledBitmap(bitmaps[i], subSize, subSize, true);
+            subBitmap = Bitmap.createScaledBitmap(bitmaps[i], subSize, subSize, true); // 创建缩放的bitmap，如果传入尺寸和原来尺寸一样，不会进行变换
 
+             // x左坐标，y上坐标
             float x = 0;
             float y = 0;
 
@@ -97,6 +100,7 @@ public class WechatLayoutManager implements ILayoutManager {
                 }
             }
 
+             // 按照坐标绘制头像
             canvas.drawBitmap(subBitmap, x, y, null);
         }
         return result;
